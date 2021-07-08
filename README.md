@@ -1,32 +1,26 @@
-# x11docker/xfce
+#Minimal installation in docker for debian container with Xfce desktop
 
-XFCE desktop in Docker image. Based on Debian.
- - Run XFCE desktop in docker.
- - Use [x11docker](https://github.com/mviereck/x11docker) to run GUI applications and desktop environments in docker images. 
+It use about 500Mb disk size and it needs about 350-400Mb RAM
+It has built in vnc and noVNC for web access
+Modify the password and the screen resolution in docker-compose
+Map your ports as you wish.
+The image was tested on Synology DS218+
 
-# Command examples: 
- - Single application: `x11docker x11docker/xfce thunar`
- - Full desktop: `x11docker --desktop x11docker/xfce`
+Use reverse proxy if you want to secure your connection.
 
-# Options:
- - Persistent home folder stored on host with   `--home`
- - Shared host file or folder with              `--share PATH`
- - Hardware acceleration with option            `--gpu`
- - Clipboard sharing with option                `--clipboard`
- - ALSA sound support with option               `--alsa`
- - Pulseaudio sound support with option         `--pulseaudio`
- - Language locale settings with                `--lang [=$LANG]`
- - Printing over CUPS with                      `--printer`
- - Webcam support with                          `--webcam`
+You can build the image yourself with the apps you need or you download the minimal installation from docker hub.
 
-Look at `x11docker --help` for further options.
+# Installation: 
+ - git
+ - cd 
+ - docker-compose build --pull
+ - docker-compose up -d
+ - acces the image with a VNC client or simply http://server-ip:8080
 
-# Extend base image
-To add your desired applications, create your own Dockerfile with this image as a base. Example:
-```
-FROM x11docker/xfce
-RUN apt-get update
-RUN apt-get install -y midori
+#Optionals
+The Dockerfile has a lot optional apps which are not installed by default.
+Uncomment the corespondent lines if you want to install them.
+
 ```
  # Screenshot
  XFCE desktop in an Xnest window running with x11docker:
