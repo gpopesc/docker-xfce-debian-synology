@@ -22,7 +22,7 @@ version: "3"
 services:
   synodebian:
     image: gpopesc/docker-xfce-debian-synology
-    container_name: syno-test
+    container_name: syno-debian
     environment:
       - VNCPASS=admin
       - DISPLAY_WIDTH=1200
@@ -41,8 +41,8 @@ services:
 ```
 Create a local folder "data", then "docker-compose up -d" from your ssh command prompt
 Wait for container to startup about 1 minute, depending of your configuration.
-Acces the image with a VNC client on port 5905 or simply http://server-ip:8080 in your browser.
-SHM added in order to avoid errors on firefox when running.
+Acces the container with a VNC client on port 5905 or simply http://server-ip:8080 in your browser.
+SHM added in order to avoid errors on Firefox when running.
 
 * Method 2. build the image yourself and customize it according with your needs. *
 
