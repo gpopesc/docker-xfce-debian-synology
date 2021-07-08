@@ -56,10 +56,8 @@ SHM added in order to avoid errors on firefox when running.
 The Dockerfile has a lot optional apps which are not installed by default.
 Uncomment the corespondent lines if you want to install them.
 
-```
 
-
-![image](https://user-images.githubusercontent.com/11590919/124981599-69a5cd80-e03e-11eb-9f89-0830f01a9058.png)
+![image](https://user-images.githubusercontent.com/11590919/124983614-db7f1680-e040-11eb-8c00-8366fa22bfea.png)
 
  
 
