@@ -3,7 +3,7 @@
 It use about 500Mb disk size and it needs about 350-400Mb RAM.
 It has built in vnc and noVNC for web access.
 
-Modify the password and the screen resolution in docker-compose
+Modify the password and the screen resolution in docker-compose.
 Map your ports as you wish.
 The image was tested on Synology DS218+
 
