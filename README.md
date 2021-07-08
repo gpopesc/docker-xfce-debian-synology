@@ -55,6 +55,21 @@ SHM added in order to avoid errors on Firefox when running.
 Dockerfile has a lot optional apps which are not installed by default.
 Uncomment the corespondent lines if you want to install them.
 
+*Method 3: install from docker CLI*
+From your ssh client run following command:
+
+'''
+docker run -p 8080:8080 -p 5905:5900 \
+-v ./data:/root/Downloads \
+-v /etc/localtime:/etc/localtime:ro \
+-e VNCPASS=admin \
+-e DISPLAY_WIDTH=1200 \
+-e DISPLAY_HEIGHT=720 \
+--name syno-debian --restart unless-stopped\
+gpopesc/docker-xfce-debian-synology
+'''
+Create local folder data and map it in the command.
+Replace default password and resolution with desired option.
 
 ![image](https://user-images.githubusercontent.com/11590919/124983614-db7f1680-e040-11eb-8c00-8366fa22bfea.png)
 
