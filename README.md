@@ -44,7 +44,7 @@ Wait for container to startup about 1 minute, depending of your configuration.
 Acces the container with a VNC client on port 5905 or simply http://server-ip:8080 in your browser.
 SHM added in order to avoid errors on Firefox when running.
 
-* Method 2. build the image yourself and customize it according with your needs. *
+*Method 2: build the image yourself and customize it according with your needs.*
 
  - git https://github.com/gpopesc/docker-xfce-debian-synology.git
  - cd docker-xfce-debian-synology
@@ -52,8 +52,7 @@ SHM added in order to avoid errors on Firefox when running.
  - docker-compose up -d
 
 
-#Optionals
-The Dockerfile has a lot optional apps which are not installed by default.
+Dockerfile has a lot optional apps which are not installed by default.
 Uncomment the corespondent lines if you want to install them.
 
 
