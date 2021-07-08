@@ -2,9 +2,9 @@ FROM debian:buster-slim
 
 LABEL maintainer="gpopesc@gmail.com"
 
-ARG DF=noninteractive \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US.UTF-8 \
+ARG DF=noninteractive &&\
+    LANG=en_US.UTF-8 &&\
+    LANGUAGE=en_US.UTF-8 &&\
     DISPLAY=:0
 
 
