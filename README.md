@@ -21,7 +21,7 @@ You can build the image yourself with the apps you need or you download the mini
 version: "3"
 services:
   synodebian:
-    image: gpopesc/docker-xfce-debian-synology
+    image: gpopesc/docker-xfce-debian-synology:v1.0
     container_name: syno-debian
     environment:
       - VNCPASS=admin
@@ -61,19 +61,20 @@ Uncomment the corespondent lines if you want to install them.
 
 
 *Method 3: install from docker CLI*
-From your ssh client run following command:
+From your SSH client copy-paste and run following command:
 
 ```
-docker run -p 8080:8080 -p 5905:5900 \
--v ./data:/root/Downloads \
--v /etc/localtime:/etc/localtime:ro \
--e VNCPASS=admin \
--e DISPLAY_WIDTH=1200 \
--e DISPLAY_HEIGHT=720 \
---name syno-debian --restart unless-stopped\
-gpopesc/docker-xfce-debian-synology
+docker run -p 8080:8080 -p 5905:5900\
+ -e VNCPASS=admin\
+ -e DISPLAY_WIDTH=1200\
+ -e DISPLAY_HEIGHT=720\
+ -v /volume1/docker/syno-debian/data:/root/Downloads\
+ --shm-size 4g\
+ --name syno-debian\
+ --restart unless-stopped\
+ gpopesc/docker-xfce-debian-synology:v1.0
 ```
-Create local folder data and map it in the command.
+Create local folder "data" and map it in the command. Adjust full local path acordingly: "/volume1/docker/syno-debian/data"
 Replace default password and resolution with desired option.
 
 ![image](https://user-images.githubusercontent.com/11590919/124983614-db7f1680-e040-11eb-8c00-8366fa22bfea.png)
