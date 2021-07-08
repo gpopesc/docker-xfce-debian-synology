@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/usr/bin/chromium --no-sandbox
+Name=Chromium
+Comment=Chromium browser
+Icon=chromium
+Path=/root/Desktop
+StartupNotify=true
+GenericName=Chromium
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;application/x-mimearchive;x-scheme-handler/http;x-scheme-handler/https;

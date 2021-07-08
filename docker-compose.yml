@@ -1,0 +1,22 @@
+version: "3"
+services:
+  synology-debian:
+#    image: my-app:latest
+    container_name: synology-debian
+    build: .
+    environment:
+      - VNCPASS=admin
+      - DISPLAY_WIDTH=1200
+      - DISPLAY_HEIGHT=720
+    ports:
+      - 5901:5900   #vnc port
+      - 8788:8080   #http port
+    volumes:
+      - ./data:/root/Downloads
+#      - ./data/root:/root #map root if you want to save all your seetings 
+      - /etc/localtime:/etc/localtime:ro
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+         size: 4000000000 # ~4gb
+    restart: unless-stopped
