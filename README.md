@@ -47,10 +47,12 @@ SHM added in order to avoid errors on Firefox when running.
 
 *Method 2: build the image yourself and customize it according with your needs.*
 
+```
  - git https://github.com/gpopesc/docker-xfce-debian-synology.git
  - cd docker-xfce-debian-synology
  - docker-compose build --pull
  - docker-compose up -d
+ ```
 
 
 Dockerfile has a lot optional apps which are not installed by default.
@@ -61,7 +63,7 @@ Uncomment the corespondent lines if you want to install them.
 *Method 3: install from docker CLI*
 From your ssh client run following command:
 
-'''
+```
 docker run -p 8080:8080 -p 5905:5900 \
 -v ./data:/root/Downloads \
 -v /etc/localtime:/etc/localtime:ro \
@@ -70,7 +72,7 @@ docker run -p 8080:8080 -p 5905:5900 \
 -e DISPLAY_HEIGHT=720 \
 --name syno-debian --restart unless-stopped\
 gpopesc/docker-xfce-debian-synology
-'''
+```
 Create local folder data and map it in the command.
 Replace default password and resolution with desired option.
 
