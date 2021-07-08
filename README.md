@@ -46,11 +46,11 @@ SHM added in order to avoid errors on Firefox when running.
 
 * Method 2. build the image yourself and customize it according with your needs. *
 
- - git
- - cd 
+ - git https://github.com/gpopesc/docker-xfce-debian-synology.git
+ - cd docker-xfce-debian-synology
  - docker-compose build --pull
  - docker-compose up -d
- - acces the image with a VNC client or simply http://server-ip:8080
+
 
 #Optionals
 The Dockerfile has a lot optional apps which are not installed by default.
