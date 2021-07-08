@@ -2,10 +2,10 @@ FROM debian:buster-slim
 
 LABEL maintainer="gpopesc@gmail.com"
 
-ARG DF=noninteractive &&\
-    LANG=en_US.UTF-8 &&\
-    LANGUAGE=en_US.UTF-8 &&\
-    DISPLAY=:0
+ARG DF=noninteractive
+ARG LANG=en_US.UTF-8
+ARG LANGUAGE=en_US.UTF-8
+ARG DISPLAY=:0
 
 
 ENV HOME=/root \
