@@ -1,4 +1,4 @@
-# Minimal installation in docker of a debian container with Xfce desktop
+# Full installation in docker of a debian container with Xfce desktop
 
 It use about 500Mb disk size and it needs about 350-400Mb RAM.
 It has built in vnc server and noVNC for web access.
