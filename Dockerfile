@@ -48,10 +48,10 @@ RUN apt-get update && apt-mark hold iptables && \
       xfce4-netload-plugin \
       xfce4-notes-plugin \
       xfce4-places-plugin \
-#      xfce4-sensors-plugin \
-#      xfce4-smartbookmark-plugin \
+      xfce4-sensors-plugin \
+      xfce4-smartbookmark-plugin \
       xfce4-systemload-plugin \
-#      xfce4-timer-plugin \
+      xfce4-timer-plugin \
       xfce4-verve-plugin \
       xfce4-weather-plugin \
       xfce4-whiskermenu-plugin && \
@@ -74,15 +74,15 @@ RUN apt-get update && apt-get -y install git \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
-#RUN apt-get update && apt-get -y install putty \
-#                                         chromium \
-#                                         xarchiver \
-#                                         gpicview \
-#                                         onboard \
-#                                         firefox-esr \
-#                                         sudo \
-#                                         gpg-agent \
-#    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get -y install putty \
+                                         chromium \
+                                         xarchiver \
+                                         gpicview \
+                                         onboard \
+                                         firefox-esr \
+                                         sudo \
+                                         gpg-agent \
+    && rm -rf /var/lib/apt/lists/*
 
 
 #install noVNC
@@ -92,9 +92,9 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
         && rm -rf /opt/noVNC/utils/websockify/.git 
 
 
-#install lightweight browser - Palemoon
-# RUN wget -q -P /tmp https://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/amd64/palemoon_29.2.1-1.gtk2_amd64.deb 
-# RUN apt-get update && apt-get install -y /tmp/pale*.deb
+install lightweight browser - Palemoon
+RUN wget -q -P /tmp https://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/amd64/palemoon_29.2.1-1.gtk2_amd64.deb 
+RUN apt-get update && apt-get install -y /tmp/pale*.deb
 
 #uncomment all lines to install chrome browser
 #RUN apt update \
@@ -114,8 +114,8 @@ HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vn
 
 
 
-#Uncomment if you install chromium
-#COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
+Uncomment if you install chromium
+COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
 
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
