@@ -1,11 +1,19 @@
 # Minimal installation in docker of a debian container with Xfce desktop
 
-It use about 500Mb disk size and it needs about 350-400Mb RAM.
+It use about 500Mb disk size and it needs about 350-450Mb RAM when running (more with firefox or chromium).
 It has built in vnc server and noVNC for web access.
 
 Modify the password and the screen resolution in docker-compose. The default password is admin.
 Map your ports as you wish. Default port for vnc connection 5905 and for http port 8080.
+SHM added in docker compose or CLI in order to avoid errors on Firefox when running.
 The image was tested on Synology DS218+
+
+After succesfull container deployment you can add a browser inside from terminal:
+```
+apt-get update && apt-get install palemoon
+or
+apt-get update && apt-get install firefox-esr
+```
 
 Use reverse proxy if you want to secure your connection. Create websocket on your reverse proxy settings in Synology.
 ![image](https://user-images.githubusercontent.com/11590919/124982716-b4741500-e03f-11eb-968d-99a0c4ae46f7.png)
@@ -42,7 +50,7 @@ services:
 Create a local folder "data", then "docker-compose up -d" from your ssh command prompt
 Wait for container to startup about 1 minute, depending of your configuration.
 Acces the container with a VNC client on port 5905 or simply http://server-ip:8080 in your browser.
-SHM added in order to avoid errors on Firefox when running.
+
 
 
 *Method 2: build the image yourself and customize it according with your needs.*
@@ -56,7 +64,7 @@ SHM added in order to avoid errors on Firefox when running.
 
 
 Dockerfile has a lot optional apps which are not installed by default.
-Uncomment the corespondent lines if you want to install them.
+Uncomment the corespondend lines if you want to install them.
 
 
 
@@ -74,7 +82,7 @@ docker run -p 8080:8080 -p 5905:5900\
  --restart unless-stopped\
  gpopesc/xfce-debian-synology
 ```
-Create local folder "data" and map it in the command. Adjust full local path acordingly: "/volume1/docker/syno-debian/data"
+Create local folder "syno-debian/data" in your docker folder and map it in the command. Adjust full local path acordingly: "/volume1/docker/syno-debian/data"
 Replace default password and resolution with desired option.
 
 ![image](https://user-images.githubusercontent.com/11590919/124983614-db7f1680-e040-11eb-8c00-8366fa22bfea.png)
