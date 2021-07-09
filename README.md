@@ -56,10 +56,10 @@ Acces the container with a VNC client on port 5905 or simply http://server-ip:80
 *Method 2: build the image yourself and customize it according with your needs.*
 
 ```
- - git https://github.com/gpopesc/xfce-debian-synology.git
- - cd xfce-debian-synology
- - docker-compose build --pull
- - docker-compose up -d
+ git clone https://github.com/gpopesc/xfce-debian-synology.git
+ cd xfce-debian-synology
+ docker-compose build --pull
+ docker-compose up -d
  ```
 
 
