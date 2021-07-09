@@ -1,10 +1,10 @@
 # Full installation in docker of a debian container with Xfce desktop
 
-It use about 500Mb disk size and it needs about 350-400Mb RAM.
 It has built in vnc server and noVNC for web access.
 
 Modify the password and the screen resolution in docker-compose. The default password is admin.
 Map your ports as you wish. Default port for vnc connection 5905 and for http port 8080.
+SHM added in order to avoid errors on Firefox when running.
 The image was tested on Synology DS218+
 
 Use reverse proxy if you want to secure your connection. Create websocket on your reverse proxy settings in Synology.
@@ -42,7 +42,6 @@ services:
 Create a local folder "data", then "docker-compose up -d" from your ssh command prompt
 Wait for container to startup about 1 minute, depending of your configuration.
 Acces the container with a VNC client on port 5905 or simply http://server-ip:8080 in your browser.
-SHM added in order to avoid errors on Firefox when running.
 
 
 *Method 2: build the image yourself and customize it according with your needs.*
