@@ -21,7 +21,7 @@ You can build the image yourself with the apps you need or you download the mini
 version: "3"
 services:
   synodebian:
-    image: gpopesc/docker-xfce-debian-synology:v1.0
+    image: gpopesc/xfce-debian-synology
     container_name: syno-debian
     environment:
       - VNCPASS=admin
@@ -72,7 +72,7 @@ docker run -p 8080:8080 -p 5905:5900\
  --shm-size 4g\
  --name syno-debian\
  --restart unless-stopped\
- gpopesc/docker-xfce-debian-synology:v1.0
+ gpopesc/xfce-debian-synology
 ```
 Create local folder "data" and map it in the command. Adjust full local path acordingly: "/volume1/docker/syno-debian/data"
 Replace default password and resolution with desired option.
