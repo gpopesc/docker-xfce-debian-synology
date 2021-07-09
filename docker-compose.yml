@@ -1,7 +1,7 @@
 version: "3"
 services:
   syno-debian:
-#    image: gpopesc/docker-xfce-debian-synology
+#    image: gpopesc/xfce-debian-synology
     container_name: syno-debian
     build: .
     environment:
