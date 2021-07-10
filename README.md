@@ -3,12 +3,15 @@
 It use about 500Mb disk size and it needs about 350-450Mb RAM when running (more with firefox or chromium).
 It has built in vnc server and noVNC for web access.
 
-Modify the password and the screen resolution in docker-compose. The default password is admin.
-Map your ports as you wish. Default port for vnc connection 5905 and for http port 8080.
-SHM added in docker compose or CLI in order to avoid errors on Firefox when running.
-The image was tested on Synology DS218+
+There is a full dockker image with all apps preinstalled here: https://hub.docker.com/r/gpopesc/xfce-debian-synology-full 
+It has Chromium, Firefox, Palemoon, Putty, Image viewer, onboard virtual keyboard, Mousepad text editor, Xarchiver and many plugins from XFCE desktop
 
-After succesfull container deployment you can add a browser inside from terminal:
+Modify the password and the screen resolution in docker-compose. The default password is admin.
+Map your ports as you wish. Default port for vnc connection is 5905 and for http port is 8080.
+SHM added in docker compose or CLI in order to avoid errors on Firefox when running.
+The image was tested on Synology DS218+ .
+
+You can add a browser inside from terminal, after succesfull container deployment:
 ```
 apt-get update && apt-get install palemoon
 or
@@ -35,12 +38,12 @@ services:
       - VNCPASS=admin
       - DISPLAY_WIDTH=1200
       - DISPLAY_HEIGHT=720
+      - TZ=Europe/Bucharest
     ports:
       - 5905:5900   #vnc port
       - 8080:8080   #http port
     volumes:
       - ./data:/root/Downloads
-      - /etc/localtime:/etc/localtime:ro
       - type: tmpfs
         target: /dev/shm
         tmpfs:
@@ -63,19 +66,20 @@ Acces the container with a VNC client on port 5905 or simply http://server-ip:80
  ```
 
 
-Dockerfile has a lot optional apps which are not installed by default.
+Dockerfile has a lot optional apps, which are not installed by default.
 Uncomment the corespondend lines if you want to install them.
 
 
 
 *Method 3: install from docker CLI*
-From your SSH client copy-paste and run following command:
+From your SSH client copy-paste and run following command (all rows, one time):
 
 ```
 docker run -p 8080:8080 -p 5905:5900\
  -e VNCPASS=admin\
  -e DISPLAY_WIDTH=1200\
  -e DISPLAY_HEIGHT=720\
+ -e TZ=Europe/Bucharest\
  -v /volume1/docker/syno-debian/data:/root/Downloads\
  --shm-size 4g\
  --name syno-debian\

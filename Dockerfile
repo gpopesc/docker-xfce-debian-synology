@@ -15,7 +15,8 @@ ENV HOME=/root \
     DISPLAY=${DISPLAY} \
     DISPLAY_WIDTH=${DISPLAY_WIDTH} \
     DISPLAY_HEIGHT=${DISPLAY_HEIGHT} \
-    VNCPASS=${VNCPASS}
+    VNCPASS=${VNCPASS} \
+    TZ=${TZ}
 
 
 RUN apt-get update && apt-mark hold iptables && \
@@ -71,6 +72,7 @@ RUN apt-get update && apt-get -y install git \
       python3 \
       x11vnc \
       xvfb \
+      tzdata \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
