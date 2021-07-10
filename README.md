@@ -11,6 +11,9 @@ Map your ports as you wish. Default port for vnc connection is 5905 and for http
 SHM added in docker compose or CLI in order to avoid errors on Firefox when running.
 The image was tested on Synology DS218+ .
 
+Acces the container with a VNC client on port 5905 or simply http://server-ip:8087 in your browser.
+Wait for container to startup about 1 minute, depending of your configuration.
+
 You can add a browser inside from terminal, after succesfull container deployment:
 ```
 apt-get update && apt-get install palemoon
@@ -51,9 +54,6 @@ services:
     restart: unless-stopped
 ```
 Create a local folder "data", then "docker-compose up -d" from your ssh command prompt
-Wait for container to startup about 1 minute, depending of your configuration.
-Acces the container with a VNC client on port 5905 or simply http://server-ip:8080 in your browser.
-
 
 
 *Method 2: build the image yourself and customize it according with your needs.*
