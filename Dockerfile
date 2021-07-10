@@ -102,7 +102,7 @@ RUN wget -q -P /tmp https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/
 RUN wget -q -P /tmp https://icesoft.ro/download/icefact_1.1.119.3-1_amd64.deb
 # install all downloaded apps
 RUN apt-get update && apt-get install -y /tmp/*.deb
-
+RUN rm -f /tmp/*.deb
 
 EXPOSE 5900 8080
 
