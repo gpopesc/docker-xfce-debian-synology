@@ -11,7 +11,7 @@ services:
       - TZ=Europe/Bucharest
     ports:
       - 5905:5900   #vnc port
-      - 8080:8080   #http port
+      - 8087:8080   #http port
     volumes:
       - ./data:/root/Downloads
 #      - ./data/root:/root #map root if you want to save all your seetings 
