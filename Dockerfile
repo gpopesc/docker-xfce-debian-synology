@@ -16,30 +16,30 @@ ENV HOME=/root \
     DISPLAY_WIDTH=${DISPLAY_WIDTH} \
     DISPLAY_HEIGHT=${DISPLAY_HEIGHT} \
     VNCPASS=${VNCPASS} \
-    TZ=${TZ}
+    
 
 
 RUN apt-get update && apt-mark hold iptables && \
-    env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       dbus-x11 \
       psmisc \
       xdg-utils \
       x11-xserver-utils \
       x11-utils && \
-    env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       xfce4 && \
-    env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       gtk3-engines-xfce \
       libgtk-3-bin \
-      libpulse0 \
+#      libpulse0 \
       mousepad \
       xfce4-notifyd \
       xfce4-taskmanager \
       xfce4-terminal && \
-    env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
 #      xfce4-battery-plugin \
-      xfce4-clipman-plugin \
-      xfce4-cpufreq-plugin \
+#      xfce4-clipman-plugin \
+#      xfce4-cpufreq-plugin \
       xfce4-cpugraph-plugin \
       xfce4-diskperf-plugin \
       xfce4-datetime-plugin \
@@ -47,16 +47,16 @@ RUN apt-get update && apt-mark hold iptables && \
       xfce4-genmon-plugin \
       xfce4-indicator-plugin \
       xfce4-netload-plugin \
-      xfce4-notes-plugin \
+#      xfce4-notes-plugin \
       xfce4-places-plugin \
-      xfce4-sensors-plugin \
-      xfce4-smartbookmark-plugin \
+#      xfce4-sensors-plugin \
+#      xfce4-smartbookmark-plugin \
       xfce4-systemload-plugin \
-      xfce4-timer-plugin \
+#      xfce4-timer-plugin \
       xfce4-verve-plugin \
       xfce4-weather-plugin \
       xfce4-whiskermenu-plugin && \
-    env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       libxv1 \
       mesa-utils \
       mesa-utils-extra && \
@@ -67,23 +67,23 @@ RUN apt-get update && apt-mark hold iptables && \
 RUN apt-get update && apt-get -y install git \
       wget \
       curl \
-      net-tools \
+#      net-tools \
       gnupg2 \
       python3 \
       x11vnc \
       xvfb \
-      tzdata \
+#      tzdata \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
-RUN apt-get update && apt-get -y install putty \
-                                         chromium \
-                                         xarchiver \
+RUN apt-get update && apt-get -y install onboard \
+#                                         chromium \
+#                                         xarchiver \
                                          gpicview \
-                                         onboard \
-                                         firefox-esr \
-                                         sudo \
-                                         gpg-agent \
+#                                         putty \
+#                                         firefox-esr \
+#                                         sudo \
+#                                         gpg-agent \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -96,16 +96,12 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
 
 #install lightweight browser - Palemoon
 RUN wget -q -P /tmp https://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/amd64/palemoon_29.2.1-1.gtk2_amd64.deb 
-RUN apt-get update && apt-get install -y /tmp/pale*.deb
-
-#uncomment all lines to install chrome browser
-#RUN apt update \
-#    && apt install -y gpg-agent \
-#    && curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-#    && (dpkg -i ./google-chrome-stable_current_amd64.deb || apt-get install -fy) \
-#    && curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add \
-#    && rm google-chrome-stable_current_amd64.deb \
-#    && rm -rf /var/lib/apt/lists/*
+# get WPS office
+RUN wget -q -P /tmp https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/10161/wps-office_11.1.0.10161.XA_amd64.deb 
+# get icefact
+RUN wget -q -P /tmp https://icesoft.ro/download/icefact_1.1.119.3-1_amd64.deb
+# install all downloaded apps
+RUN apt-get update && apt-get install -y /tmp/*.deb
 
 
 EXPOSE 5900 8080
@@ -117,7 +113,7 @@ HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vn
 
 
 # Uncomment if you install chromium
-COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
+# COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
 
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
