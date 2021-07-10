@@ -8,6 +8,7 @@ services:
       - VNCPASS=admin
       - DISPLAY_WIDTH=1200
       - DISPLAY_HEIGHT=720
+      - TZ=Europe/Bucharest
     ports:
       - 5905:5900   #vnc port
       - 8080:8080   #http port
