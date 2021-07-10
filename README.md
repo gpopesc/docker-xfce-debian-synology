@@ -3,11 +3,11 @@
 It use about 500Mb disk size and it needs about 350-450Mb RAM when running (more with firefox or chromium).
 It has built in vnc server and noVNC for web access.
 
-There is a full dockker image with all apps preinstalled here: https://hub.docker.com/r/gpopesc/xfce-debian-synology-full 
+There is a full docker image with all apps preinstalled here: https://hub.docker.com/r/gpopesc/xfce-debian-synology-full 
 It has Chromium, Firefox, Palemoon, Putty, Image viewer, onboard virtual keyboard, Mousepad text editor, Xarchiver and many plugins from XFCE desktop
 
 Modify the password and the screen resolution in docker-compose. The default password is admin.
-Map your ports as you wish. Default port for vnc connection is 5905 and for http port is 8080.
+Map your ports as you wish. Default port for vnc connection is 5905 and for http port is 8087.
 SHM added in docker compose or CLI in order to avoid errors on Firefox when running.
 The image was tested on Synology DS218+ .
 
@@ -41,7 +41,7 @@ services:
       - TZ=Europe/Bucharest
     ports:
       - 5905:5900   #vnc port
-      - 8080:8080   #http port
+      - 8087:8080   #http port
     volumes:
       - ./data:/root/Downloads
       - type: tmpfs
@@ -75,7 +75,7 @@ Uncomment the corespondend lines if you want to install them.
 From your SSH client copy-paste and run following command (all rows, one time):
 
 ```
-docker run -p 8080:8080 -p 5905:5900\
+docker run -p 8087:8080 -p 5905:5900\
  -e VNCPASS=admin\
  -e DISPLAY_WIDTH=1200\
  -e DISPLAY_HEIGHT=720\
