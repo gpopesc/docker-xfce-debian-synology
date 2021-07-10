@@ -9,11 +9,12 @@ services:
       - DISPLAY_WIDTH=1200
       - DISPLAY_HEIGHT=720
     ports:
-      - 5905:5900   #vnc port
-      - 8087:8080   #http port
+      - 5910:5900   #vnc port
+      - 8787:8080   #http port
     volumes:
 #      - ./data:/root/Downloads
       - ./data/root:/root #map root if you want to save all your seetings 
+      - /volume1/web/afterlogicpro/data/files/private/c2034715-a07f-46a8-afa3-8a978739789d:/root/share
       - /etc/localtime:/etc/localtime:ro
       - type: tmpfs
         target: /dev/shm
