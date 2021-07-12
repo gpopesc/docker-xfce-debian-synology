@@ -1,5 +1,5 @@
 # branch used for developing & testing
-# go to main branch
+# go to master branch
 
 
  
