@@ -74,7 +74,7 @@ RUN apt-get update && apt-get -y install git \
       xvfb \
       tzdata \
       supervisor \
-      novnc \
+#      novnc \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
@@ -90,10 +90,11 @@ RUN apt-get update && apt-get -y install git \
 
 
 #install noVNC
+RUN git clone git://github.com/kanaka/noVNC /opt/vnc \
 #RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
-#        && git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify \
-#        && rm -rf /opt/noVNC/.git \
-#        && rm -rf /opt/noVNC/utils/websockify/.git 
+        && git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify \
+        && rm -rf /opt/noVNC/.git \
+        && rm -rf /opt/noVNC/utils/websockify/.git 
 
 
 #install lightweight browser - Palemoon
