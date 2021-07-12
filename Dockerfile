@@ -123,9 +123,12 @@ RUN curl -fsSL https://download.opensuse.org/repositories/home:stevenpusser/Debi
 
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
-COPY entrypoint.sh /entrypoint.sh
-RUN ["chmod", "+x", "/entrypoint.sh"]
-ENTRYPOINT ["/entrypoint.sh"]
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["/usr/bin/supervisord"]
+#COPY entrypoint.sh /entrypoint.sh
+#RUN ["chmod", "+x", "/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 
 
 
