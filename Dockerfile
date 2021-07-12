@@ -115,9 +115,6 @@ WORKDIR /root/
 
 HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vnc.html
 
-RUN echo 'deb http://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/ /' | tee /etc/apt/sources.list.d/home:stevenpusser.list 
-RUN curl -fsSL https://download.opensuse.org/repositories/home:stevenpusser/Debian_10/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/home_stevenpusser.gpg > /dev/null
-
 #Uncomment if you install chromium
 #COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
 
@@ -126,12 +123,3 @@ COPY ./config/index.html /opt/noVNC/index.html
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord"]
-#COPY entrypoint.sh /entrypoint.sh
-#RUN ["chmod", "+x", "/entrypoint.sh"]
-#ENTRYPOINT ["/entrypoint.sh"]
-
-
-
-
-
-
