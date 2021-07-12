@@ -90,8 +90,7 @@ RUN apt-get update && apt-get -y install git \
 
 
 #install noVNC
-RUN git clone git://github.com/kanaka/noVNC /opt/vnc \
-#RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
+RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
         && git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify \
         && rm -rf /opt/noVNC/.git \
         && rm -rf /opt/noVNC/utils/websockify/.git 
