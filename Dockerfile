@@ -73,6 +73,7 @@ RUN apt-get update && apt-get -y install git \
       x11vnc \
       xvfb \
       tzdata \
+      supervisor \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
