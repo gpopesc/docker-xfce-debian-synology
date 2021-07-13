@@ -74,7 +74,7 @@ RUN apt-get update && apt-get -y install git \
       xvfb \
       tzdata \
       supervisor \
-#      novnc \
+      procps \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
