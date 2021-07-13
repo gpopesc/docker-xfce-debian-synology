@@ -78,15 +78,20 @@ RUN apt-get update && apt-get -y install git \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
-#RUN apt-get update && apt-get -y install putty \
+RUN apt-get update && apt-get -y install putty \
 #                                         chromium \
-#                                         xarchiver \
+                                         xarchiver \
 #                                         gpicview \
 #                                         onboard \
 #                                         firefox-esr \
 #                                         sudo \
 #                                         gpg-agent \
-#    && rm -rf /var/lib/apt/lists/*
+                                          krusader \
+                                          breeze-icon-theme \
+                                          filezilla \
+                                          udevil \
+                                          spacefm \
+    && rm -rf /var/lib/apt/lists/*
 
 
 #install noVNC
