@@ -124,7 +124,7 @@ HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vn
 
 #Uncomment if you install chromium
 #COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
-
+RUN xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
 COPY ./config/capslock_toggle.sh /root/capslock_toggle.sh
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
