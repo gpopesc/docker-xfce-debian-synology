@@ -4,7 +4,7 @@ It use about 500Mb disk size and it needs about 350-450Mb RAM when running (more
 It has built in vnc server and noVNC for web access.
 
 There is a full docker image with all apps preinstalled here: https://hub.docker.com/r/gpopesc/xfce-debian-synology-full 
-It has Chromium, Firefox, Palemoon, Putty, Image viewer, onboard virtual keyboard, Mousepad text editor, Xarchiver and many plugins from XFCE desktop
+It has Chromium, Firefox, Palemoon, Putty, Image viewer, Mousepad text editor, Xarchiver and many plugins from XFCE desktop
 
 Modify the password and the screen resolution in docker-compose. The default password is admin.
 Map your ports as you wish. Default port for vnc connection is 5905 and for http port is 8087.
@@ -13,6 +13,7 @@ The image was tested on Synology DS218+ .
 
 Acces the container with a VNC client on port 5905 or simply http://server-ip:8087 in your browser.
 Wait for container to startup about 1 minute, depending of your configuration.
+Execute the script from Downloads: capslock_toggle.sh if the caps lock reamain on.
 
 You can add a browser inside from terminal, after succesfull container deployment:
 ```
@@ -87,7 +88,7 @@ docker run -p 8087:8080 -p 5905:5900\
  gpopesc/xfce-debian-synology
 ```
 Create local folder "syno-debian/data" in your docker folder and map it in the command. Adjust full local path acordingly: "/volume1/docker/syno-debian/data"
-Replace default password and resolution with desired option.
+Replace default password and resolution with desired options.
 
 ![image](https://user-images.githubusercontent.com/11590919/124983614-db7f1680-e040-11eb-8c00-8366fa22bfea.png)
 
