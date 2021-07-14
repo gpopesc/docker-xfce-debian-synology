@@ -7,7 +7,6 @@ ARG LANG=en_US.UTF-8
 ARG LANGUAGE=en_US.UTF-8
 ARG DISPLAY=:0
 
-
 ENV HOME=/root \
     DEBIAN_FRONTEND=${DF} \
     LANG=${LANG} \ 
@@ -17,7 +16,6 @@ ENV HOME=/root \
     DISPLAY_HEIGHT=${DISPLAY_HEIGHT} \
     VNCPASS=${VNCPASS} \
     TZ=${TZ}
-
 
 RUN apt-get update && apt-mark hold iptables && \
     env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
@@ -73,6 +71,9 @@ RUN apt-get update && apt-get -y install git \
       x11vnc \
       xvfb \
       tzdata \
+      supervisor \
+      procps \
+      xdotool \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
@@ -80,10 +81,12 @@ RUN apt-get update && apt-get -y install putty \
                                          chromium \
                                          xarchiver \
                                          gpicview \
-                                         onboard \
                                          firefox-esr \
                                          sudo \
                                          gpg-agent \
+                                         krusader \
+                                         breeze-icon-theme \
+                                         filezilla \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -119,14 +122,12 @@ HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vn
 # Uncomment if you install chromium
 COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
 
+#copy default config and scripts
+COPY ./config/default.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+COPY ./config/capslock_toggle.sh /root/capslock_toggle.sh
+RUN ["chmod", "+x", "/root/capslock_toggle.sh"]
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
-COPY entrypoint.sh /entrypoint.sh
-RUN ["chmod", "+x", "/entrypoint.sh"]
-ENTRYPOINT ["/entrypoint.sh"]
-
-
-
-
-
-
+COPY startup.sh /tmp
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["/usr/bin/supervisord"]
