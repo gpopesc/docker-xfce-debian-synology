@@ -13,7 +13,7 @@ The image was tested on Synology DS218+ .
 
 Acces the container with a VNC client on port 5905 or simply http://server-ip:8087 in your browser.
 Wait for container to startup about 1 minute, depending of your configuration.
-Execute the script from root: capslock_toggle.sh if the caps lock remain on or install a virtual keyboard ''' apt-get update && apt-get install onboard '''
+Execute the script from Home folder: capslock_toggle.sh if the caps lock remain on or install a virtual keyboard ``` apt-get update && apt-get install onboard ```
 
 You can add a browser inside from terminal, after succesfull container deployment:
 ```
