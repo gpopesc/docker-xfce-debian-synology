@@ -72,14 +72,15 @@ RUN apt-get update && apt-get -y install git \
       python3 \
       x11vnc \
       xvfb \
-#      tzdata \
+      tzdata \
+      xdotool \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
-RUN apt-get update && apt-get -y install onboard \
+RUN apt-get update && apt-get -y install gpicview \
 #                                         chromium \
 #                                         xarchiver \
-                                         gpicview \
+#                                         onboard \
 #                                         putty \
 #                                         firefox-esr \
 #                                         sudo \
