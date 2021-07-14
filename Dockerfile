@@ -125,6 +125,8 @@ HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vn
 #Uncomment if you install chromium
 #COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
 
+#copy deafult config and scripts
+COPY ./config/default.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 COPY ./config/capslock_toggle.sh /root/capslock_toggle.sh
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
