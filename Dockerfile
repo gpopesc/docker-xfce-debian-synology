@@ -73,6 +73,8 @@ RUN apt-get update && apt-get -y install git \
       x11vnc \
       xvfb \
       tzdata \
+      supervisor \
+      procps \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
@@ -84,6 +86,9 @@ RUN apt-get update && apt-get -y install git \
 #                                         firefox-esr \
 #                                         sudo \
 #                                         gpg-agent \
+#                                         krusader \
+#                                         breeze-icon-theme \
+#                                         filezilla \
 #    && rm -rf /var/lib/apt/lists/*
 
 
@@ -121,12 +126,6 @@ HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vn
 
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
-COPY entrypoint.sh /entrypoint.sh
-RUN ["chmod", "+x", "/entrypoint.sh"]
-ENTRYPOINT ["/entrypoint.sh"]
-
-
-
-
-
-
+COPY startup.sh /tmp
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["/usr/bin/supervisord"]
