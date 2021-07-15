@@ -84,7 +84,7 @@ RUN apt-get update && apt-get -y install putty \
                                          firefox-esr \
                                          sudo \
                                          doublecmd-gtk \
-                                         gvfs-* \
+#                                         gvfs-* \
 #                                         gpg-agent \
 #                                         krusader \
 #                                         breeze-icon-theme \
@@ -100,9 +100,12 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
 
 
 #install lightweight browser - Palemoon
-RUN apt-get update && apt-get install -y /tmp/pale*.deb
+#get lightweight browser - Palemoon
+RUN wget -q -P /tmp https://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/amd64/palemoon_29.2.1-1.gtk2_amd64.deb 
 # get WPS office
 RUN wget -q -P /tmp https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/10161/wps-office_11.1.0.10161.XA_amd64.deb 
+#install downloaded debs
+RUN apt-get update && apt-get install -y /tmp/*.deb
 #clean
 RUN rm -f /tmp/*.deb && apt-get cleann -y && apt-get autoclean -y && apt-get autoremove -y
 
