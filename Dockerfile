@@ -84,6 +84,7 @@ RUN apt-get update && apt-get -y install putty \
                                          firefox-esr \
                                          sudo \
                                          doublecmd-gtk \
+#install gvfs to have recycle bin and samba
 #                                         gvfs-* \
 #                                         gpg-agent \
 #                                         krusader \
@@ -107,7 +108,7 @@ RUN wget -q -P /tmp https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/
 #install downloaded debs
 RUN apt-get update && apt-get install -y /tmp/*.deb
 #clean
-RUN rm -f /tmp/*.deb && apt-get cleann -y && apt-get autoclean -y && apt-get autoremove -y
+RUN rm -f /tmp/*.deb && apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y
 
 #uncomment all lines to install chrome browser
 #RUN apt update \
