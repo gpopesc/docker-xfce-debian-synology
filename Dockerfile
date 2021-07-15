@@ -83,7 +83,9 @@ RUN apt-get update && apt-get -y install putty \
                                          gpicview \
                                          firefox-esr \
                                          sudo \
-                                         gpg-agent \
+                                         doublecmd-gtk \
+                                         gvfs-* \
+#                                         gpg-agent \
                                          krusader \
                                          breeze-icon-theme \
                                          filezilla \
