@@ -3,11 +3,11 @@ services:
   evi-rent:
     image: gpopesc/evi-rent
     container_name: evi-rent
-#    build: .
     environment:
       - VNCPASS=admin
       - DISPLAY_WIDTH=1200
       - DISPLAY_HEIGHT=720
+      - TZ=Europe/Bucharest
     ports:
       - 5910:5900   #vnc port
       - 8787:8080   #http port
@@ -15,7 +15,6 @@ services:
 #      - ./data:/root/Downloads
       - ./data/root:/root #map root if you want to save all your seetings 
       - /volume1/web/afterlogicpro/data/files/private/c2034715-a07f-46a8-afa3-8a978739789d:/root/share
-      - /etc/localtime:/etc/localtime:ro
       - type: tmpfs
         target: /dev/shm
         tmpfs:
