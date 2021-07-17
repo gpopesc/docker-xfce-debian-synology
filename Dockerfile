@@ -85,7 +85,7 @@ RUN apt-get update && apt-get -y install putty \
                                          sudo \
                                          doublecmd-gtk \
 #install gvfs to have recycle bin and samba
-#                                         gvfs-* \
+#                                         gvfs-backends \
 #                                         gpg-agent \
 #                                         krusader \
 #                                         breeze-icon-theme \
