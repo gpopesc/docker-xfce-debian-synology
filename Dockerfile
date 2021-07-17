@@ -55,7 +55,7 @@ RUN apt-get update && apt-mark hold iptables && \
       xfce4-weather-plugin \
       xfce4-whiskermenu-plugin && \
     env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
-      libxv1 \
+      libxv1 &&\
 #      mesa-utils \
 #      mesa-utils-extra && \
     sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
