@@ -56,8 +56,8 @@ RUN apt-get update && apt-mark hold iptables && \
       xfce4-whiskermenu-plugin && \
     env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
       libxv1 \
-      mesa-utils \
-      mesa-utils-extra && \
+#      mesa-utils \
+#      mesa-utils-extra && \
     sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 
@@ -78,7 +78,7 @@ RUN apt-get update && apt-get -y install git \
 
 #optional apps, comment if you don't need
 RUN apt-get update && apt-get -y install gpicview \
-#                                         chromium \
+                                         chromium \
 #                                         xarchiver \
 #                                         putty \
 #                                         firefox-esr \
@@ -95,7 +95,7 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
 
 
 #install lightweight browser - Palemoon
-RUN wget -q -P /tmp https://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/amd64/palemoon_29.2.1-1.gtk2_amd64.deb 
+# RUN wget -q -P /tmp https://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/amd64/palemoon_29.2.1-1.gtk2_amd64.deb 
 # get WPS office
 RUN wget -q -P /tmp https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/10161/wps-office_11.1.0.10161.XA_amd64.deb 
 # get icefact
