@@ -77,6 +77,7 @@ RUN apt-get update && apt-get -y install git \
       tzdata \
       supervisor \
       procps \
+      sudo \
       htop \
 #      pulseaudio \
 #      pulseaudio-dlna \
@@ -127,7 +128,9 @@ WORKDIR /root/
 HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vnc.html
 
 
-
+COPY ./config/default.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+COPY ./config/capslock_toggle.sh /root/capslock_toggle.sh
+RUN ["chmod", "+x", "/root/capslock_toggle.sh"]
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
 COPY startup.sh /tmp

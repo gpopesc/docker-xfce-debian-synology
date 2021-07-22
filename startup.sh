@@ -11,11 +11,14 @@ echo -e "linuxpassword\nlinuxpassword" | ${VNCPASS} root
 
 if [ -z "${USER_NAME}" ] || [ "${USER_NAME}"=='none' ]
 then
+
 useradd -m -p $(openssl passwd -1 ${USER_PASSWORD}) -s /bin/bash -G sudo ${USER_NAME}
 sudo usermod -a -G root ${USER_NAME}
 export HOME=/home/${USER_NAME}
-su - "${USER_NAME}"
-startxfce4
+cp /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh
+# su - "${USER_NAME}"
+sudo -u ${USER_NAME} startxfce4
 else
 echo "Running as root"
 startxfce4
