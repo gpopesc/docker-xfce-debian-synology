@@ -14,8 +14,8 @@ then
 useradd -m -p $(openssl passwd -1 ${USER_PASSWORD}) -s /bin/bash -G sudo ${USER_NAME}
 sudo usermod -a -G root ${USER_NAME}
 export HOME=/home/${USER_NAME}
-su - ${USER_NAME}
-sudo -u ${USER_NAME} startxfce4
+su - "${USER_NAME}"
+startxfce4
 else
 echo "Running as root"
 startxfce4

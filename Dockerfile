@@ -77,23 +77,24 @@ RUN apt-get update && apt-get -y install git \
       tzdata \
       supervisor \
       procps \
-      pulseaudio \
-      pulseaudio-dlna \
-      pavucontrol-qt \
+      htop \
+#      pulseaudio \
+#      pulseaudio-dlna \
+#      pavucontrol-qt \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
 RUN apt-get update && apt-get -y install putty \
-#                                         chromium \
-                                         xarchiver \
+                                         chromium \
+#                                         xarchiver \
 #                                         gpicview \
 #                                         onboard \
 #                                         firefox-esr \
 #                                         sudo \
 #                                         gpg-agent \
-                                          krusader \
-                                          breeze-icon-theme \
-                                          filezilla \
+#                                          krusader \
+#                                          breeze-icon-theme \
+#                                          filezilla \
 
     && rm -rf /var/lib/apt/lists/*
 
