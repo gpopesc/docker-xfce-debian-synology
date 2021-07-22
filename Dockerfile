@@ -16,7 +16,9 @@ ENV HOME=/root \
     DISPLAY_WIDTH=${DISPLAY_WIDTH} \
     DISPLAY_HEIGHT=${DISPLAY_HEIGHT} \
     VNCPASS=${VNCPASS} \
-    TZ=${TZ}
+    TZ=${TZ} \
+    USER_NAME=${USER_NAME} \
+    USER_PASSWORD=${USER_PASSWORD}
 
 
 RUN apt-get update && apt-mark hold iptables && \
@@ -92,8 +94,7 @@ RUN apt-get update && apt-get -y install putty \
                                           krusader \
                                           breeze-icon-theme \
                                           filezilla \
-                                          udevil \
-                                          spacefm \
+
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -124,8 +125,7 @@ WORKDIR /root/
 
 HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vnc.html
 
-#Uncomment if you install chromium
-#COPY ./config/chromium.txt /usr/share/applications/Chromium.desktop
+
 
 RUN mkdir /opt/.vnc
 COPY ./config/index.html /opt/noVNC/index.html 
