@@ -38,7 +38,7 @@ if [ -n "${USER_NAME}" ]
   echo "Running as root"
   mkdir -p /root/.config/xfce4/xfconf/xfce-perchannel-xml
   cp /tmp/*.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/
-  startxfce4 &&
+  nohup startxfce4 &>/dev/null &
   #allow bash script running from thunar
   read -p "wait 30s" -t 30 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true && echo "script finnished"
 fi
