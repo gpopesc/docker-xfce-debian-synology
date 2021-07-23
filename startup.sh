@@ -21,6 +21,7 @@ mkdir /tmp/.ICE-unix && chmod 1777 /tmp/.ICE-unix
 
 if [ -n "${USER_NAME}" ]
  then
+  echo "Running as user ${USER_NAME}"
   #set default root password
   echo root:${VNCPASS} | sudo chpasswd
   useradd -m -p $(openssl passwd -1 ${USER_PASSWORD}) -s /bin/bash -G sudo ${USER_NAME}
@@ -32,11 +33,12 @@ if [ -n "${USER_NAME}" ]
   #echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S chown ${USER_NAME}:0 /home/${USER_NAME}/capslock_toggle.sh
   echo "cd /home/${USER_NAME}" >> ~/.bashrc
   sudo -u ${USER_NAME} startxfce4 &
-  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S  sleep 15 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
+  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S  sleep 30 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
  else
   echo "Running as root"
+  mkdir -p /root/.config/xfce4/xfconf/xfce-perchannel-xml
   cp /tmp/xfce4-panel.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
   startxfce4 &&
   #allow bash script running from thunar
-  sleep 15 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
+  sleep 30 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
 fi
