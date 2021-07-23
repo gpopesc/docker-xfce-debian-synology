@@ -32,7 +32,7 @@ if [ -n "${USER_NAME}" ]
   cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh && chmod 777 /home/${USER_NAME}/capslock_toggle.sh
   #echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S chown ${USER_NAME}:0 /home/${USER_NAME}/capslock_toggle.sh
   echo "cd /home/${USER_NAME}" >> ~/.bashrc
-  sudo -u ${USER_NAME} startxfce4 &
+  sudo -u ${USER_NAME} startxfce4 & \
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S  read -p "wait 30s" -t 30 && echo "script finnished"
  else
   echo "Running as root"
