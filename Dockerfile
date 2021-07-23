@@ -78,7 +78,7 @@ RUN apt-get update && apt-get -y install git \
       supervisor \
       procps \
       sudo \
-      htop \
+      xdotool \
 #      pulseaudio \
 #      pulseaudio-dlna \
 #      pavucontrol-qt \
