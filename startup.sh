@@ -28,17 +28,17 @@ if [ -n "${USER_NAME}" ]
   sudo usermod -a -G root ${USER_NAME}
   export HOME=/home/${USER_NAME}
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S mkdir -p /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
-  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S cp /tmp/*.xml /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml/
+  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S cp /tmp/xfce4-panel.xml /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml/
   cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh && chmod 777 /home/${USER_NAME}/capslock_toggle.sh
   #echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S chown ${USER_NAME}:0 /home/${USER_NAME}/capslock_toggle.sh
   echo "cd /home/${USER_NAME}" >> ~/.bashrc
   sudo -u ${USER_NAME} startxfce4 & \
-  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S  sleep 30 && echo "script finnished"
+  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S  sleep 60 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true && echo "script finnished"
  else
   echo "Running as root"
   mkdir -p /root/.config/xfce4/xfconf/xfce-perchannel-xml
-  cp /tmp/*.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/
-  nohup startxfce4 &>/dev/null &
+  cp /tmp/xfce4-panel.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/
+  nohup startxfce4 &>/dev/null & \
   #allow bash script running from thunar
-  sleep 30 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true && echo "script finnished"
+  sleep 60 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true && echo "script finnished"
 fi
