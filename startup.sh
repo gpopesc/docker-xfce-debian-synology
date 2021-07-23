@@ -8,6 +8,15 @@ curl -fsSL https://download.opensuse.org/repositories/home:stevenpusser/Debian_1
 echo 'deb http://download.opensuse.org/repositories/home:/Alexx2000/Debian_10/ /' | sudo tee /etc/apt/sources.list.d/home:Alexx2000.list
 curl -fsSL https://download.opensuse.org/repositories/home:Alexx2000/Debian_10/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Alexx2000.gpg > /dev/null
 
+
+#adjust chromium shortcut for running
+if [ -e "/usr/share/applications/chromium.desktop" ]
+ then
+  sed -i 's|Exec=/usr/bin/chromium %U|Exec=/usr/bin/chromium --no-sandbox %U|g' /usr/share/applications/chromium.desktop
+ else
+  echo "No Chromium installed"
+fi
+
 #set default root password
 echo root:${VNCPASS} | sudo chpasswd
 mkdir /tmp/.ICE-unix && chmod 1777 /tmp/.ICE-unix
@@ -22,21 +31,12 @@ if [ -n "${USER_NAME}" ] || [ "${USER_NAME}"!='none' ]
   cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh && chmod 777 /home/${USER_NAME}/capslock_toggle.sh
   #echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S chown ${USER_NAME}:0 /home/${USER_NAME}/capslock_toggle.sh
   echo "cd /home/${USER_NAME}" >> ~/.bashrc
-  sudo -u ${USER_NAME} startxfce4
+  sudo -u ${USER_NAME} startxfce4 &
+  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S  sleep 15 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
  else
   echo "Running as root"
   cp /tmp/xfce4-panel.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-  startxfce4
+  startxfce4 &
+  #allow bash script running from thunar
+  sleep 15 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
 fi
-
-#adjust chromium shortcut for running
-if [ -e "/usr/share/applications/chromium.desktop" ]
- then
-  sed -i 's|Exec=/usr/bin/chromium %U|Exec=/usr/bin/chromium --no-sandbox %U|g' /usr/share/applications/chromium.desktop
- else
-  echo "No Chromium installed"
-fi
-
-#allow bash script running from thunar
-sleep 15
-xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
