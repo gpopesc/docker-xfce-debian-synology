@@ -17,12 +17,12 @@ if [ -e "/usr/share/applications/chromium.desktop" ]
   echo "No Chromium installed"
 fi
 
-#set default root password
-echo root:${VNCPASS} | sudo chpasswd
 mkdir /tmp/.ICE-unix && chmod 1777 /tmp/.ICE-unix
 
-if [ -n "${USER_NAME}" ] || [ "${USER_NAME}"!='none' ]
+if [ -n "${USER_NAME}" ]
  then
+  #set default root password
+  echo root:${VNCPASS} | sudo chpasswd
   useradd -m -p $(openssl passwd -1 ${USER_PASSWORD}) -s /bin/bash -G sudo ${USER_NAME}
   sudo usermod -a -G root ${USER_NAME}
   export HOME=/home/${USER_NAME}
@@ -36,7 +36,7 @@ if [ -n "${USER_NAME}" ] || [ "${USER_NAME}"!='none' ]
  else
   echo "Running as root"
   cp /tmp/xfce4-panel.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-  startxfce4 &
+  startxfce4 &&
   #allow bash script running from thunar
   sleep 15 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
 fi
