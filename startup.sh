@@ -10,6 +10,7 @@ curl -fsSL https://download.opensuse.org/repositories/home:Alexx2000/Debian_10/R
 
 #set default root password
 echo root:${VNCPASS} | sudo chpasswd
+mkdir /tmp/.ICE-unix && chmod 1777 /tmp/.ICE-unix
 
 if [ -n "${USER_NAME}" ] || [ "${USER_NAME}"!='none' ]
  then
@@ -18,7 +19,7 @@ if [ -n "${USER_NAME}" ] || [ "${USER_NAME}"!='none' ]
   export HOME=/home/${USER_NAME}
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S mkdir -p /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S cp /tmp/xfce4-panel.xml /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
-  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh
+  cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh && chmod 777 /home/${USER_NAME}/capslock_toggle.sh
   #echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S chown ${USER_NAME}:0 /home/${USER_NAME}/capslock_toggle.sh
   echo "cd /home/${USER_NAME}" >> ~/.bashrc
   sudo -u ${USER_NAME} startxfce4
