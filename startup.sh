@@ -16,11 +16,9 @@ if [ -n "${USER_NAME}" ] || [ "${USER_NAME}"!='none' ]
   useradd -m -p $(openssl passwd -1 ${USER_PASSWORD}) -s /bin/bash -G sudo ${USER_NAME}
   sudo usermod -a -G root ${USER_NAME}
   export HOME=/home/${USER_NAME}
-  mkdir -p /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
-  cp /tmp/xfce4-panel.xml /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
+  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S mkdir -p /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S cp /tmp/xfce4-panel.xml /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
-  cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh
-  cp /tmp/xfce4-panel.xml /home/${USER_NAME}
+  echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S cp /root/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh
   #echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S chown ${USER_NAME}:0 /home/${USER_NAME}/capslock_toggle.sh
   echo "cd /home/${USER_NAME}" >> ~/.bashrc
   sudo -u ${USER_NAME} startxfce4
