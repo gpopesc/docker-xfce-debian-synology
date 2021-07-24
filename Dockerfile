@@ -110,6 +110,8 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
 #install lightweight browser - Palemoon
 # RUN wget -q -P /tmp https://download.opensuse.org/repositories/home:/stevenpusser/Debian_10/amd64/palemoon_29.2.1-1.gtk2_amd64.deb 
 # RUN apt-get update && apt-get install -y /tmp/pale*.deb
+RUN wget -q -P /tmp  https://download.anydesk.com/linux/deb/anydesk_6.0.1-1_amd64.deb
+RUN apt-get update && apt-get install -y /tmp/any*.deb
 
 #uncomment all lines to install chrome browser
 #RUN apt update \

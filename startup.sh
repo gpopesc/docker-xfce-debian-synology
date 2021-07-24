@@ -8,6 +8,8 @@ curl -fsSL https://download.opensuse.org/repositories/home:stevenpusser/Debian_1
 echo 'deb http://download.opensuse.org/repositories/home:/Alexx2000/Debian_10/ /' | sudo tee /etc/apt/sources.list.d/home:Alexx2000.list
 curl -fsSL https://download.opensuse.org/repositories/home:Alexx2000/Debian_10/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Alexx2000.gpg > /dev/null
 
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
 
 #adjust chromium shortcut for running
 if [ -e "/usr/share/applications/chromium.desktop" ]
@@ -33,7 +35,7 @@ if [ -n "${USER_NAME}" ]
   #echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S chown ${USER_NAME}:0 /home/${USER_NAME}/capslock_toggle.sh
   echo "cd /home/${USER_NAME}" >> ~/.bashrc
   sudo -u ${USER_NAME} startxfce4 & \
-  sleep 60 && \
+  echo "===========> before sleep <============" && sleep 60 && \
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true && \
   echo "===========> script finnished <============"
  else
@@ -42,5 +44,7 @@ if [ -n "${USER_NAME}" ]
   cp /tmp/xfce4-panel.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/
   nohup startxfce4 &>/dev/null & \
   #allow bash script running from thunar
-  sleep 60 && xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true && echo "===========> script finnished <============"
+  echo "===========> before sleep <============" && sleep 60 && \
+  xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true && \
+  echo "===========> script finnished <============"
 fi
