@@ -120,7 +120,6 @@ WORKDIR /root/
 
 HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8080/vnc.html
 
-
 #copy default config and scripts
 COPY ./config/default.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 COPY ./config/capslock_toggle.sh /root/capslock_toggle.sh
