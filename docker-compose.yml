@@ -5,18 +5,23 @@ services:
     container_name: syno-debian
     build: .
     environment:
-      - VNCPASS=admin
-      - DISPLAY_WIDTH=1200
-      - DISPLAY_HEIGHT=720
-      - TZ=Europe/Bucharest
+      - VNCPASS=$VNC               
+      - DISPLAY_WIDTH=$WIDTH
+      - DISPLAY_HEIGHT=$HEIGHT
+      - TZ=$TZ
+      - UID=$UID
+      - GID=$GID
+      - USER_NAME=$USER_NAME      
+      - USER_PASSWORD=$USER_PASS  
     ports:
-      - 5905:5900   #vnc port
-      - 8087:8080   #http port
+      - $VNCPORT:5900   
+      - $HTTPPORT:8000
     volumes:
-      - ./data:/root/Downloads
-#      - ./data/root:/root #map root if you want to save all your seetings 
+      - ./data:/home/$USER_NAME
+#      - $LOCAL_PATH:/home/$USER_NAME/share                  # uncomment if want to mount additional share
+#      - /run/user/$UID/pulse:/run/user/$UID/pulse:ro        # uncomment in linux if you want sound
       - type: tmpfs
         target: /dev/shm
         tmpfs:
          size: 4000000000 # ~4gb
-    restart: unless-stopped
+    restart: on-failure
