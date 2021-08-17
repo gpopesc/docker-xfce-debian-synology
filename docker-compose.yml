@@ -1,8 +1,8 @@
 version: "3"
 services:
-  syno-debian:
+  syno-debian-test:
 #    image: gpopesc/xfce-debian-synology
-    container_name: syno-debian
+    container_name: syno-debian-test
     build: .
     environment:
       - VNCPASS=$VNC               
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./data:/home/$USER_NAME
 #      - $LOCAL_PATH:/home/$USER_NAME/share                  # uncomment if want to mount additional share
-#      - /run/user/$UID/pulse:/run/user/$UID/pulse:ro        # uncomment in linux if you want sound
+      - /run/user/$UID/pulse:/run/user/$UID/pulse:ro        # uncomment in linux if you want sound
       - type: tmpfs
         target: /dev/shm
         tmpfs:
