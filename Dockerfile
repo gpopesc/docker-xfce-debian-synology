@@ -82,11 +82,11 @@ RUN apt-get update && apt-get -y install git \
       sudo \
       xdotool \
       cron \
-      pulseaudio \
-      pulseaudio-dlna \
-      pavucontrol-qt \
+#      pulseaudio \
+#      pulseaudio-dlna \
+#      pavucontrol-qt \
      pulseaudio-utils \
-     libasound2-plugins \
+#     libasound2-plugins \
      libpulse0 \
    && rm -rf /var/lib/apt/lists/*
 
