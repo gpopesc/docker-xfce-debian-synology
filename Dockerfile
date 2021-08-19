@@ -3,8 +3,8 @@ FROM debian:buster
 LABEL maintainer="gpopesc@gmail.com"
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG LANG=en_US.UTF-8
-ARG LANGUAGE=en_US.UTF-8
+ARG LANG=ro_RO.UTF-8
+ARG LANGUAGE=ro_RO.UTF-8
 ARG DISPLAY=:1
 
 
