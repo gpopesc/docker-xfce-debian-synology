@@ -66,6 +66,10 @@ RUN apt-get update && apt-mark hold iptables && \
       mesa-utils-extra && \
     sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
+RUN apt-get install -y locales && \
+    sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
+    dpkg-reconfigure locales && \
+    update-locale LANG=$LANG
 
 # mandatory apps
 RUN apt-get update && apt-get -y install git \
