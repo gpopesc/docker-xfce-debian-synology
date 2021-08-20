@@ -91,7 +91,6 @@ RUN apt-get update && apt-get -y install git \
 #      pavucontrol-qt \
      pulseaudio-utils \
 #     libasound2-plugins \
-     libpulse0 \
    && rm -rf /var/lib/apt/lists/*
 
 #optional apps, comment if you don't need
@@ -100,15 +99,15 @@ RUN apt-get update && apt-get -y install putty \
 #                                         xarchiver \
 #                                         gpicview \
 #                                         onboard \
-                                         firefox-esr \
+#                                         firefox-esr \
 #                                          krusader \
 #                                          breeze-icon-theme \
 #                                          filezilla \
                                          doublecmd-qt \
     && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get -y install bsdmainutils \
+#RUN apt-get update && apt-get -y install bsdmainutils \
 #                                         fontconfig \
-                                         gtk2-* \
+#                                         gtk2-* \
 #                                         libpulse* \
 #                                         libtool* \
 #                                         libxrender* \
@@ -117,7 +116,7 @@ RUN apt-get update && apt-get -y install bsdmainutils \
 #                                         desktop-file-utils \
 #                                         sqlite \
 #                                         ttf-mscorefonts-installer \
-&& rm -rf /var/lib/apt/lists/*
+#&& rm -rf /var/lib/apt/lists/*
 
 
 
@@ -131,11 +130,12 @@ RUN echo 'deb http://download.opensuse.org/repositories/home:/stevenpusser/Debia
     curl -fsSL https://download.opensuse.org/repositories/home:stevenpusser/Debian_10/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_stevenpusser.gpg > /dev/null
 
 # install lightweight browser - Palemoon
-RUN apt-get update && apt-get -y install palemoon
+# RUN apt-get update && apt-get -y install palemoon
 # RUN apt-get -y install spotify-client
 # RUN wget -q -P /tmp  https://download.anydesk.com/linux/deb/anydesk_6.0.1-1_amd64.deb
 RUN wget -q -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    wget -q -P /tmp https://gpopesc.i234.me/old_root/wps/wps-office_11.1.0.10702.XA_amd64.deb
+    wget -q -P /tmp https://gpopesc.i234.me/old_root/wps/wps-office_11.1.0.10161.XA_amd64.deb && \
+    wget -q -P /tmp https://gpopesc.i234.me/old_root/wps/icefact-srv_0.9.2-1_amd64.deb
 RUN apt-get install -y /tmp/*.deb
 RUN rm -f /tmp/*.deb
 
@@ -148,7 +148,7 @@ WORKDIR /root/
 HEALTHCHECK --interval=1m --timeout=10s CMD curl --fail http://127.0.0.1:8000/vnc.html
 
 # Cron job
-RUN touch /tmp/cron.log && (crontab -l; echo "0 5 * * * apt update && sleep 10 && script -c 'apt upgrade -y' /tmp/cron.log  && sleep 10 && apt autoclean") | crontab
+RUN touch /tmp/cron.log && (crontab -l; echo "5 5 * * * apt update && sleep 10 && script -c 'apt upgrade -y' /tmp/cron.log  && sleep 10 && apt autoclean") | crontab
 
 #config files to temp location
 RUN mkdir /opt/.vnc && mkdir /tmp/config
