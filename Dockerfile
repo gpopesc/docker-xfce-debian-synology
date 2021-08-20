@@ -95,7 +95,7 @@ RUN apt-get update && apt-get -y install git \
 
 #optional apps, comment if you don't need
 RUN apt-get update && apt-get -y install putty \
-                                         chromium \
+#                                         chromium \
 #                                         xarchiver \
 #                                         gpicview \
 #                                         onboard \
@@ -103,7 +103,7 @@ RUN apt-get update && apt-get -y install putty \
 #                                          krusader \
 #                                          breeze-icon-theme \
 #                                          filezilla \
-                                         doublecmd-qt \
+#                                         doublecmd-qt \
     && rm -rf /var/lib/apt/lists/*
 #RUN apt-get update && apt-get -y install bsdmainutils \
 #                                         fontconfig \
