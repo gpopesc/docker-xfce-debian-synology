@@ -11,6 +11,12 @@ if [ -e "/usr/share/applications/google-chrome.desktop" ]
  else
   echo "No Chrome installed"
 fi
+#adjust chromium shortcut for running
+if [ -e "/usr/share/applications/chromium.desktop" ]; then
+     sed -i 's|Exec=/usr/bin/chromium %U|Exec=/usr/bin/chromium --no-sandbox %U|g' /usr/share/applications/chromium.desktop
+else
+echo "No Chromium installed"
+fi
 
 mkdir /tmp/.ICE-unix && chmod 1777 /tmp/.ICE-unix
 echo root:${VNCPASS} | sudo chpasswd
