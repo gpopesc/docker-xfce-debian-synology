@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: gpopesc/xfce-dev:latest
+          tags: gpopesc/evi-rent:latest
