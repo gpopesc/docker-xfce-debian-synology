@@ -60,7 +60,7 @@ RUN apt-get update && apt-mark hold iptables && \
       xfce4-verve-plugin \
       xfce4-weather-plugin \
       xfce4-whiskermenu-plugin && \
-    env DEBIAN_FRONTEND=${DF} apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
       libxv1 \
       mesa-utils \
       mesa-utils-extra && \
@@ -96,11 +96,11 @@ RUN apt-get update && apt-get -y install git \
 
 #optional apps, comment if you don't need
 RUN apt-get update && apt-get -y install putty \
-#                                         chromium \
+                                         chromium \
 #                                         xarchiver \
 #                                         gpicview \
 #                                         onboard \
-#                                         firefox-esr \
+                                         firefox-esr \
 #                                          krusader \
 #                                          breeze-icon-theme \
 #                                          filezilla \
@@ -117,7 +117,6 @@ RUN apt-get update && apt-get -y install bsdmainutils \
 #                                         desktop-file-utils \
 #                                         sqlite \
 #                                         ttf-mscorefonts-installer \
-                                         locales \
 && rm -rf /var/lib/apt/lists/*
 
 
