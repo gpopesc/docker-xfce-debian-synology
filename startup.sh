@@ -27,7 +27,7 @@ if [ -n "${USER_NAME}" ]
   echo "Running as user ${USER_NAME} with id ${UID} and groupid ${GID}"
   #set default root password
   groupadd -f -g ${GID} users
-  #groupmod -g ${GID} users
+  groupmod -g ${GID} users
   useradd -u ${UID} -g ${GID} -m -p $(openssl passwd -1 ${USER_PASSWORD}) -s /bin/bash -G sudo ${USER_NAME}
   find /home/${USER_NAME} -path /home/${USER_NAME}/share -prune -o -exec chown ${UID}:${GID} {} \;
   usermod -a -G root ${USER_NAME} && usermod -a -G audio ${USER_NAME} && usermod -a -G users ${USER_NAME}
