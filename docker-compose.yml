@@ -2,7 +2,7 @@ version: "3"
 services:
   syno-debian-test:
 #    image: gpopesc/xfce-debian-synology
-    container_name: syno-debian-test
+    container_name: syno-debian-test-2
     build: .
     environment:
       - VNCPASS=$VNC               
