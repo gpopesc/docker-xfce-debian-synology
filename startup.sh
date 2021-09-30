@@ -8,13 +8,17 @@ echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-st
 if [ -e "/usr/share/applications/google-chrome.desktop" ]
  then
   sed -i 's|Exec=/usr/bin/google-chrome-stable %U|Exec=/usr/bin/google-chrome-stable %U --no-sandbox|g' /usr/share/applications/google-chrome.desktop
+  echo "done chrome"
  else
   echo "No Chrome installed"
 fi
+
 #adjust chromium shortcut for running
-if [ -e "/usr/share/applications/chromium.desktop" ]; then
+if [ -e "/usr/share/applications/chromium.desktop" ]
+ then
      sed -i 's|Exec=/usr/bin/chromium %U|Exec=/usr/bin/chromium --no-sandbox %U|g' /usr/share/applications/chromium.desktop
-else
+     echo "done chromium"
+ else
 echo "No Chromium installed"
 fi
 
