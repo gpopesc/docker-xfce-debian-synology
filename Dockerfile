@@ -95,7 +95,7 @@ RUN apt-get update && apt-get -y install git \
 
 #optional apps, comment if you don't need
 RUN apt-get update && apt-get -y install putty \
-#                                         chromium \
+                                         chromium \
 #                                         xarchiver \
 #                                         gpicview \
 #                                         onboard \
@@ -130,11 +130,11 @@ RUN echo 'deb http://download.opensuse.org/repositories/home:/stevenpusser/Debia
     curl -fsSL https://download.opensuse.org/repositories/home:stevenpusser/Debian_10/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_stevenpusser.gpg > /dev/null
 
 # install lightweight browser - Palemoon
-RUN apt-get update && apt-get -y install palemoon
+# RUN apt-get update && apt-get -y install palemoon
 # RUN apt-get -y install spotify-client
 # RUN wget -q -P /tmp  https://download.anydesk.com/linux/deb/anydesk_6.0.1-1_amd64.deb
-RUN wget -q -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    wget -q -P /tmp https://gpopesc.i234.me/old_root/wps/wps-office_11.1.0.10702.XA_amd64.deb && \
+# RUN wget -q -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \ not working anymore
+RUN wget -q -P /tmp https://gpopesc.i234.me/old_root/wps/wps-office_11.1.0.10920.XA_amd64.deb && \
     wget -q -P /tmp https://gpopesc.i234.me/old_root/wps/icefact_1.1.119.3-1_amd64.deb
 RUN apt-get install -y /tmp/*.deb
 RUN rm -f /tmp/*.deb
