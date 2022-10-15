@@ -40,6 +40,7 @@ if [ -n "${USER_NAME}" ]
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S mkdir -p /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml
   echo ${USER_PASSWORD} | sudo -u ${USER_NAME} -S cp -nv /tmp/config/*.xml /home/${USER_NAME}/.config/xfce4/xfconf/xfce-perchannel-xml/
   cp /tmp/config/capslock_toggle.sh /home/${USER_NAME}/capslock_toggle.sh && chmod 777 /home/${USER_NAME}/capslock_toggle.sh
+  cp /tmp/config/Capture2_medium.jpg /usr/share/backgrounds/xfce/
   sed -i "s|unix:/run/user/U_ID/pulse/native|unix:/run/user/$UID/pulse/native|" /tmp/config/pulse-client.conf && \
   cp -v /tmp/config/pulse-client.conf /etc/pulse/client.conf && \
   if [ -e "/home/${USER_NAME}/.bashrc" ]
