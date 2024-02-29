@@ -97,8 +97,8 @@ RUN apt-get update && apt-get -y install git \
 #optional apps, comment if you don't need
 RUN apt-get update && apt-get -y install putty \
                                          chromium \
-#                                         xarchiver \
-#                                         gpicview \
+                                         evince \
+                                         libnotify-bin\
 #                                         onboard \
 #                                         firefox-esr \
 #                                          krusader \
