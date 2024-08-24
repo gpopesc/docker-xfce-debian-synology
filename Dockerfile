@@ -62,10 +62,11 @@ RUN apt-get update && apt-mark hold iptables && \
       xfce4-whiskermenu-plugin && \
     apt-get install -y --no-install-recommends \
       libxv1 \
+      libglu1-mesa \
       mesa-utils \
       mesa-utils-extra && \
     sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-RUN echo "deb http://deb.debian.org/debian bookworm contrib main non-free-firmware" | tee -a /etc/apt/sources.list
+RUN echo "deb http://deb.debian.org/debian bookworm contrib main non-free-firmware" | tee -a /etc/apt/sources.list 
 
 
     
