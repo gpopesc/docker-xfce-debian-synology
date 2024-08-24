@@ -22,7 +22,6 @@ ENV HOME=/root \
     UID=${UID} \
     GID=${GID}
 
-
 # Update the package lists and hold iptables to prevent it from being upgraded
 RUN apt-get update && apt-mark hold iptables && \
     apt-get install -y --no-install-recommends \
