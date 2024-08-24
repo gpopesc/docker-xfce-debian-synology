@@ -65,7 +65,8 @@ RUN apt-get update && apt-mark hold iptables && \
       mesa-utils \
       mesa-utils-extra && \
     sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-RUN sed -r -i 's/^(deb\s+.*)(main.*)$/\1\2 contrib/' /etc/apt/sources.list
+RUN echo "deb http://deb.debian.org/debian bookworm contrib main non-free-firmware" | tee -a /etc/apt/sources.list
+
 
     
 # Set up locales
