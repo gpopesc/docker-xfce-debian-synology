@@ -23,6 +23,7 @@ ENV HOME=/root \
     GID=${GID}
 
 
+# Update the package lists and hold iptables to prevent it from being upgraded
 RUN apt-get update && apt-mark hold iptables && \
     apt-get install -y --no-install-recommends \
       dbus-x11 \
@@ -64,9 +65,10 @@ RUN apt-get update && apt-mark hold iptables && \
       libxv1 \
       mesa-utils \
       mesa-utils-extra && \
-    sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml &&\
+    sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml && \
     sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list
     
+# Set up locales
 RUN apt-get install -y locales && \
     sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
     dpkg-reconfigure locales && \
