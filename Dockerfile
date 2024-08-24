@@ -73,6 +73,7 @@ RUN apt-get install -y locales && \
     dpkg-reconfigure locales && \
     update-locale LANG=$LANG
 
+
 # mandatory apps
 RUN apt-get update && apt-get -y install git \
       wget \
