@@ -85,6 +85,7 @@ RUN apt-get update && apt-get -y install git \
       net-tools \
       gnupg2 \
       python3 \
+      python3-pip \
       x11vnc \
       xvfb \
       tzdata \
@@ -144,7 +145,6 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
 #    wget -q -P /tmp https://gpopesc.i234.me/old_root/wps/icefact_1.8.2-1_amd64.deb
 # RUN apt-get install -y /tmp/*.deb
 RUN rm -f /tmp/*.deb
-RUN pip install docker
 
 
 EXPOSE 5900 8000
