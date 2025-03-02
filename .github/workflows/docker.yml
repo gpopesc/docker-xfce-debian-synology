@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - 'evi-debian'
+      - 'master'
 
 
 jobs:
@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: gpopesc/evi-rent:latest
+          tags: gpopesc/xfce-debian:latest
